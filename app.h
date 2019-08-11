@@ -7,6 +7,8 @@
 #include <OgreApplicationContext.h>
 #include <OgreCameraMan.h>
 
+#include "listener.h"
+
 using namespace Ogre;
 using namespace OgreBites;
 
@@ -21,6 +23,7 @@ public:
     void go();
 
 protected:
+    bool keyPressed(const OgreBites::KeyboardEvent& evt);
     void setup();
     void setupView();
     void createScene();
@@ -34,6 +37,7 @@ private:
     Camera*    mCamera;
     SceneNode* camNode;
     RTShader::ShaderGenerator* shadergen;
+    MyListener ouvinte;
 };
 
 #endif //APP_H

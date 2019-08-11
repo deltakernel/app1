@@ -34,11 +34,13 @@ void app1::setup()
     setupView();
     setupFramelistner();
     createScene();
+    
+    addInputListener(&ouvinte);
 }
 
 void app1::setupView()
 {
-    camNode = mScnManager->getRootSceneNode()->createChildSceneNode("camNode", Ogre::Vector3(0, -5, 5));
+    camNode = mScnManager->getRootSceneNode()->createChildSceneNode("camNode", Ogre::Vector3(0, -10, 5));
     camNode->lookAt(Ogre::Vector3(0,0,-300), Ogre::Node::TS_WORLD);
     // Create the camera
     mCamera = mScnManager->createCamera("PlayerCam");
@@ -73,3 +75,9 @@ void app1::setupFramelistner()
     addInputListener(mTrayMgr);
 }
 
+bool app1::keyPressed(const OgreBites::KeyboardEvent& evt)
+{
+    if(evt.keysym.sym == OgreBites::SDLK_ESCAPE)
+        getRoot()->queueEndRendering();
+    return true;
+}
